@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bestie! 💖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial Rounded MT Bold', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 50%, #a1c4fd 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 850px;
+            text-align: center;
+            padding: 40px 30px;
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 6px solid #ff6b9d;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
+        
+        .active-page {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.8s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .question-number {
+            font-size: 1.3rem;
+            color: #ff6b9d;
+            margin-bottom: 15px;
+            font-weight: bold;
+            background: #fff0f5;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            border: 2px dashed #ff6b9d;
+        }
+        
+        .question {
+            font-size: 2.8rem;
+            margin: 30px 0 50px;
+            color: #333;
+            line-height: 1.3;
+            padding: 0 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 0 #ffdde1;
+        }
+        
+        .emoji {
+            font-size: 4rem;
+            margin: 20px 0;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 60px 0 40px;
+            flex-wrap: nowrap;
+            position: relative;
+            height: 100px;
+        }
+        
+        .btn {
+            padding: 22px 50px;
+            font-size: 1.9rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            min-width: 200px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .btn-yes {
+            background: linear-gradient(to right, #ff6b9d, #ff8fab);
+            color: white;
+            z-index: 20;
+        }
+        
+        .btn-yes:hover {
+            transform: scale(1.05);
+            box-shadow: 0 18px 35px rgba(255, 107, 157, 0.3);
+            background: linear-gradient(to right, #ff8fab, #ff6b9d);
+        }
+        
+        .btn-no {
+            background: linear-gradient(to right, #5b86e5, #36d1dc);
+            color: white;
+            position: relative;
+            z-index: 15;
+        }
+        
+        .btn-running {
+            animation: shake 0.5s infinite;
+        }
+        
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(5px); }
+            50% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+            100% { transform: translateX(0); }
+        }
+        
+        .progress-container {
+            width: 100%;
+            margin-top: 40px;
+        }
+        
+        .progress-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #ffafbd;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #ff6b9d, #ffafbd);
+            width: 0%;
+            transition: width 0.7s;
+            border-radius: 10px;
+        }
+        
+        .friendship-quote {
+            font-style: italic;
+            color: #888;
+            margin-top: 25px;
+            font-size: 1.1rem;
+            padding: 0 20px;
+        }
+        
+        /* Birthday Page Styles */
+        .birthday-page {
+            padding: 20px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .birthday-title {
+            font-size: 4rem;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 #ffe4ec;
+        }
+        
+        .birthday-message {
+            font-size: 2rem;
+            line-height: 1.5;
+            margin: 30px 0;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        /* Celebration Animation Container */
+        .celebration-container {
+            position: relative;
+            height: 150px;
+            margin: 40px auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .celebration-emoji {
+            font-size: 5rem;
+            animation: float 3s infinite ease-in-out;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        /* Love Letter Styles */
+        .love-letter {
+            background: linear-gradient(to bottom right, #fff0f5, #fffaf0);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border-left: 8px solid #ff6b9d;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .love-letter p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .signature {
+            text-align: right;
+            font-size: 2.2rem;
+            color: #ff6b9d;
+            margin-top: 20px;
+            font-family: 'Comic Sans MS', cursive;
+        }
+        
+        /* Memories Section */
+        .memories-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .memory {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            width: 180px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid #a1c4fd;
+            transition: transform 0.3s;
+        }
+        
+        .memory:hover {
+            transform: translateY(-10px);
+        }
+        
+        .memory-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ff6b9d;
+        }
+        
+        .memory-text {
+            font-size: 1.2rem;
+            color: #5a4d8c;
+            font-weight: 600;
+        }
+        
+        .restart-btn {
+            background: linear-gradient(to right, #5b86e5, #36d1dc);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.6rem;
+            border-radius: 60px;
+            cursor: pointer;
+            margin: 30px 0;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .restart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 18px 35px rgba(54, 209, 220, 0.3);
+        }
+        
+        .troll-message {
+            font-size: 1.3rem;
+            color: #ff6b9d;
+            margin-top: 20px;
+            font-weight: 600;
+            font-style: italic;
+        }
+        
+        /* Scrollbar styling for birthday page */
+        .birthday-page::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .birthday-page::-webkit-scrollbar-track {
+            background: #fff0f5;
+            border-radius: 10px;
+        }
+        
+        .birthday-page::-webkit-scrollbar-thumb {
+            background: #ff6b9d;
+            border-radius: 10px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .question {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 18px 30px;
+                font-size: 1.6rem;
+                min-width: 160px;
+            }
+            
+            .buttons-container {
+                gap: 20px;
+                flex-direction: row;
+                height: auto;
+                margin: 40px 0 30px;
+            }
+            
+            .birthday-title {
+                font-size: 3rem;
+            }
+            
+            .birthday-message {
+                font-size: 1.6rem;
+            }
+            
+            .love-letter p {
+                font-size: 1.3rem;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .birthday-page {
+                max-height: 60vh;
+            }
+            
+            .memory {
+                width: 45%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .question {
+                font-size: 1.7rem;
+            }
+            
+            .btn {
+                padding: 15px 20px;
+                font-size: 1.4rem;
+                min-width: 140px;
+            }
+            
+            .buttons-container {
+                gap: 15px;
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .birthday-title {
+                font-size: 2.5rem;
+            }
+            
+            .emoji {
+                font-size: 3rem;
+            }
+            
+            .memory {
+                width: 100%;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page 1 -->
+        <div class="page active-page" id="page1">
+            <div class="question-number">Question 1 of 5</div>
+            <span class="emoji">🎉💖</span>
+            <h1 class="question">Ready for your birthday surprise, bestie?</h1>
+            <div class="buttons-container">
+                <button class="btn btn-yes" onclick="nextPage()">YES! 🎂</button>
+                <button class="btn btn-no" id="noBtn1">No 😒</button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-text">Birthday Progress</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                </div>
+            </div>
+            <p class="friendship-quote">"A best friend is like a four-leaf clover: hard to find and lucky to have!"</p>
+        </div>
+        
+        <!-- Page 2 -->
+        <div class="page" id="page2">
+            <div class="question-number">Question 2 of 5</div>
+            <span class="emoji">🍰😋</span>
+            <h1 class="question">Will you share your birthday cake with me?</h1>
+            <div class="buttons-container">
+                <button class="btn btn-yes" onclick="nextPage()">YES! 🍴</button>
+                <button class="btn btn-no" id="noBtn2">No, it's mine! 🤤</button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-text">Birthday Progress</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%"></div>
+                </div>
+            </div>
+            <p class="friendship-quote">"Friendship is sharing your cake and pretending you wanted the smaller piece!"</p>
+        </div>
+        
+        <!-- Page 3 -->
+        <div class="page" id="page3">
+            <div class="question-number">Question 3 of 5</div>
+            <span class="emoji">😂🤝</span>
+            <h1 class="question">Are our inside jokes the funniest thing ever?</h1>
+            <div class="buttons-container">
+                <button class="btn btn-yes" onclick="nextPage()">YES! 🤣</button>
+                <button class="btn btn-no" id="noBtn3">No, they're weird 😅</button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-text">Birthday Progress</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+            </div>
+            <p class="friendship-quote">"Friends who laugh together, stay together!"</p>
+        </div>
+        
+        <!-- Page 4 -->
+        <div class="page" id="page4">
+            <div class="question-number">Question 4 of 5</div>
+            <span class="emoji">🤫❤️</span>
+            <h1 class="question">Am I your favorite secret keeper?</h1>
+            <div class="buttons-container">
+                <button class="btn btn-yes" onclick="nextPage()">YES! 🤐</button>
+                <button class="btn btn-no" id="noBtn4">No, I tell mom! 👩</button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-text">Birthday Progress</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 80%"></div>
+                </div>
+            </div>
+            <p class="friendship-quote">"Best friends are the people you can tell your secrets to without judgment!"</p>
+        </div>
+        
+        <!-- Page 5 -->
+        <div class="page" id="page5">
+            <div class="question-number">Final Question!</div>
+            <span class="emoji">💌✨</span>
+            <h1 class="question">Do you know how awesome you are as a best friend?</h1>
+            <div class="buttons-container">
+                <button class="btn btn-yes" onclick="showBirthday()">YES! 🥹❤️</button>
+                <button class="btn btn-no" id="noBtn5">No, tell me! 💖</button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-text">Birthday Progress</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%"></div>
+                </div>
+            </div>
+            <p class="friendship-quote">"A true friend is the greatest of all blessings!"</p>
+        </div>
+        
+        <!-- Birthday Page -->
+        <div class="page birthday-page" id="birthdayPage">
+            <h1 class="birthday-title">HAPPY BIRTHDAY BESTIE! 🎂🎉</h1>
+            <span class="emoji">🎈🥳💝</span>
+            
+            <div class="celebration-container" id="celebrationContainer">
+                <div class="celebration-emoji">🎊</div>
+            </div>
+            
+            <p class="birthday-message">
+                You survived my tricky questions!<br>
+                Just like you survive my weirdness every day! 😘
+            </p>
+            
+            <div class="love-letter">
+                <p>Dear Best Friend,</p>
+                <p>On your birthday, I want to say thank you for being the most amazing friend anyone could ask for. You're my partner in crime, my shoulder to cry on, and the person who laughs at my dumbest jokes.</p>
+                <p>I'm so grateful for all our memories - the late night talks, the spontaneous adventures, and even the times we just sat in silence. You make everything better just by being there.</p>
+                <p>Remember that time we stayed up until 3 AM talking about everything and nothing? Or when we tried to bake a cake and almost set the kitchen on fire? Those are the moments I treasure the most.</p>
+                <p>You've seen me at my worst and still chose to stay. You've celebrated my highs and comforted me in my lows. You're not just my best friend - you're family.</p>
+                <p>Wishing you the happiest birthday filled with joy, love, laughter, and all the cake you can eat! May this year bring you everything you've been dreaming of and more.</p>
+                <p>Here's to many more years of friendship, adventures, and creating unforgettable memories together!</p>
+                <div class="signature">Your best friend forever 💕</div>
+            </div>
+            
+            <div class="memories-container">
+                <div class="memory">
+                    <div class="memory-icon">🤣</div>
+                    <div class="memory-text">Endless Laughter</div>
+                </div>
+                <div class="memory">
+                    <div class="memory-icon">🫂</div>
+                    <div class="memory-text">Always There</div>
+                </div>
+                <div class="memory">
+                    <div class="memory-icon">🌙</div>
+                    <div class="memory-text">Late Night Talks</div>
+                </div>
+                <div class="memory">
+                    <div class="memory-icon">🤝</div>
+                    <div class="memory-text">Unbreakable Bond</div>
+                </div>
+            </div>
+            
+<button class="restart-btn" onclick="goToGiftPage()">
+    <i class="fas fa-gift"></i> One More Gift For You!
+</button>
+            <p class="troll-message">P.S. Thanks for being the best sport! Love you lots! 😂💖</p>
+        </div>
+    </div>
+
+    <script>
+        // Current page tracker
+        let currentPage = 1;
+        const totalPages = 5;
+        
+        // Get all "No" buttons
+        const noButtons = [
+            document.getElementById('noBtn1'),
+            document.getElementById('noBtn2'),
+            document.getElementById('noBtn3'),
+            document.getElementById('noBtn4'),
+            document.getElementById('noBtn5')
+        ];
+        
+        // Initialize the troll behavior for all "No" buttons
+        function initNoButtonTroll() {
+            noButtons.forEach((btn, index) => {
+                if (btn) {
+                    // Reset button position to default
+                    btn.style.position = 'relative';
+                    btn.style.transform = '';
+                    btn.style.left = '';
+                    btn.style.top = '';
+                    btn.classList.remove('btn-running');
+                    
+                    // Add mouseenter event (hover)
+                    btn.addEventListener('mouseenter', function(e) {
+                        trollNoButton(btn, index);
+                    });
+                    
+                    // Add click event
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        trollNoButton(btn, index);
+                    });
+                    
+                    // Add touch event for mobile
+                    btn.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        trollNoButton(btn, index);
+                    });
+                }
+            });
+        }
+        
+        // Function to troll the "No" button
+        function trollNoButton(button, pageIndex) {
+            const behaviors = ['teleport', 'resize', 'rotate', 'shake'];
+            const randomBehavior = behaviors[Math.floor(Math.random() * behaviors.length)];
+            
+            // Reset any previous transformations
+            button.style.transform = '';
+            button.classList.remove('btn-running');
+            
+            switch(randomBehavior) {
+                case 'teleport':
+                    // Temporarily disappear and reappear
+                    button.style.opacity = '0';
+                    button.style.transition = 'opacity 0.1s';
+                    
+                    setTimeout(() => {
+                        // Change button text
+                        const funnyTexts = ["Nope!", "Try again!", "Missed!", "Too slow!", "Not today!"];
+                        const randomText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
+                        button.textContent = randomText;
+                        
+                        // Reappear
+                        button.style.opacity = '1';
+                        button.style.transition = 'opacity 0.3s';
+                    }, 100);
+                    break;
+                    
+                case 'resize':
+                    // Randomly resize the button
+                    const randomSize = 0.7 + Math.random() * 0.6; // Between 0.7x and 1.3x
+                    button.style.transform = `scale(${randomSize})`;
+                    button.style.transition = 'transform 0.3s';
+                    
+                    // Change text
+                    button.textContent = "Can't click me!";
+                    break;
+                    
+                case 'rotate':
+                    // Spin the button
+                    const randomRotation = Math.random() * 360;
+                    button.style.transform = `rotate(${randomRotation}deg)`;
+                    button.style.transition = 'transform 0.3s';
+                    
+                    // Change text
+                    button.textContent = "Woah!";
+                    break;
+                    
+                case 'shake':
+                    // Add shaking animation
+                    button.classList.add('btn-running');
+                    
+                    // Change text
+                    button.textContent = "No way!";
+                    break;
+            }
+            
+            // Play a funny sound
+            playTrollSound();
+            
+            // Reset button after a short delay
+            setTimeout(() => {
+                resetButtonText(button, pageIndex);
+            }, 800);
+        }
+        
+        // Function to reset button text to original
+        function resetButtonText(button, pageIndex) {
+            const originalTexts = [
+                "No 😒",
+                "No, it's mine! 🤤",
+                "No, they're weird 😅",
+                "No, I tell mom! 👩",
+                "No, tell me! 💖"
+            ];
+            
+            if (pageIndex >= 0 && pageIndex < originalTexts.length) {
+                button.textContent = originalTexts[pageIndex];
+            }
+            
+            // Also reset any transformations
+            button.style.transform = '';
+            button.classList.remove('btn-running');
+            button.style.opacity = '1';
+        }
+        
+        // Function to play a funny troll sound
+        function playTrollSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 300 + Math.random() * 400;
+                oscillator.type = 'triangle';
+                
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.2);
+            } catch (e) {
+                // If Web Audio API fails, just continue silently
+                console.log("Audio not supported");
+            }
+        }
+        
+        // Function to go to the next page
+        function nextPage() {
+            // Hide current page
+            document.getElementById(`page${currentPage}`).classList.remove('active-page');
+            
+            // Update current page
+            currentPage++;
+            
+            // Show next page
+            document.getElementById(`page${currentPage}`).classList.add('active-page');
+            
+            // Update progress bar
+            const progressFill = document.querySelector('.progress-fill');
+            progressFill.style.width = `${(currentPage / totalPages) * 100}%`;
+            
+            // Change background color for fun
+            const colors = ['#ffafbd', '#ffc3a0', '#a1c4fd', '#c2e9fb', '#ffafbd'];
+            document.body.style.background = `linear-gradient(135deg, ${colors[currentPage - 1]} 0%, ${colors[currentPage % colors.length]} 50%, ${colors[(currentPage + 1) % colors.length]} 100%)`;
+        }
+        
+        // Function to show the birthday page
+        function showBirthday() {
+            // Hide current page
+            document.getElementById(`page${currentPage}`).classList.remove('active-page');
+            
+            // Show birthday page
+            document.getElementById('birthdayPage').classList.add('active-page');
+            
+            // Start confetti animation
+            createConfetti();
+            
+            // Change background to birthday theme
+            document.body.style.background = 'linear-gradient(135deg, #ff6b9d 0%, #ffafbd 25%, #a1c4fd 50%, #c2e9fb 75%, #ffc3a0 100%)';
+            
+            // Play birthday sound
+            playBirthdaySound();
+        }
+        
+        // Function to play birthday sound
+        function playBirthdaySound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Play a happy birthday melody
+                const notes = [523.25, 523.25, 587.33, 523.25, 698.46, 659.25];
+                let time = audioContext.currentTime;
+                
+                for (let i = 0; i < notes.length; i++) {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.value = notes[i];
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0, time);
+                    gainNode.gain.linearRampToValueAtTime(0.1, time + 0.1);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, time + 0.3);
+                    
+                    oscillator.start(time);
+                    oscillator.stop(time + 0.3);
+                    
+                    time += 0.3;
+                }
+            } catch (e) {
+                console.log("Audio not supported");
+            }
+        }
+        
+        // Function to create confetti
+        function createConfetti() {
+            const container = document.getElementById('celebrationContainer');
+            const colors = ['#ff6b9d', '#ffafbd', '#a1c4fd', '#c2e9fb', '#ffc3a0'];
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.width = Math.random() * 12 + 8 + 'px';
+                confetti.style.height = Math.random() * 12 + 8 + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                
+                container.appendChild(confetti);
+                
+                // Animate confetti falling
+                const animation = confetti.animate([
+                    { 
+                        top: '0px', 
+                        opacity: 1,
+                        transform: 'rotate(0deg) scale(1)'
+                    },
+                    { 
+                        top: '200px', 
+                        opacity: 0,
+                        transform: `rotate(${Math.random() * 720}deg) scale(0.5)`
+                    }
+                ], {
+                    duration: Math.random() * 1500 + 1000,
+                    delay: Math.random() * 500
+                });
+                
+                // Remove confetti after animation
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+            
+            // Continue creating confetti periodically
+            setTimeout(createConfetti, 2000);
+        }
+function goToGiftPage() {
+    // Redirect to a new HTML page
+    window.location.href = "page4.html";  // <-- replace with your target page
+}
+
+    </script>
+</body>
+</html>

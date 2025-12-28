@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Gift of Love for You 💝</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 50%, #a1c4fd 100%);
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Floating Hearts Background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.3);
+            font-size: 24px;
+            animation: floatUp 20s linear infinite;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border: 3px solid #ff6b9d;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '💝';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            font-size: 150px;
+            opacity: 0.1;
+            transform: rotate(20deg);
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0px rgba(255, 182, 193, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #5a4d8c;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        /* Gift Boxes */
+        .gifts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .gift-box {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .gift-box:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: #ff6b9d;
+        }
+        
+        .gift-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 157, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .gift-box:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .gift-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .gift-title {
+            font-size: 2rem;
+            color: #ff6b9d;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .gift-description {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .open-gift-btn {
+            background: linear-gradient(to right, #ff6b9d, #ff8fab);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        }
+        
+        .open-gift-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        }
+        
+        /* Love Letter */
+        .love-letter-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            margin: 60px 0;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border: 3px solid #a1c4fd;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .love-letter-container::before {
+            content: '💌';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 80px;
+            opacity: 0.2;
+        }
+        
+        .letter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff6b9d;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .letter-content {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        
+        .letter-content p {
+            margin-bottom: 25px;
+        }
+        
+        .signature {
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff6b9d;
+            margin-top: 40px;
+        }
+        
+        /* Memories Gallery */
+        .memories-container {
+            margin: 60px 0;
+        }
+        
+        .memories-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff6b9d;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .memory-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+            border: 2px solid #ffc3a0;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .memory-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #ff6b9d;
+        }
+        
+        .memory-text {
+            font-size: 1.2rem;
+            color: #5a4d8c;
+            font-weight: 600;
+        }
+        
+        /* Surprise Button */
+        .surprise-section {
+            text-align: center;
+            margin: 80px 0;
+        }
+        
+        .surprise-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53, #9b5de5, #f15bb5);
+            background-size: 300% 300%;
+            animation: gradient 4s ease infinite;
+            color: white;
+            border: none;
+            padding: 25px 60px;
+            font-size: 2rem;
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .surprise-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .surprise-button::before {
+            content: '🎁';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 4rem;
+            transition: transform 0.5s;
+            opacity: 0;
+        }
+        
+        .surprise-button:hover::before {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0.3;
+        }
+        
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+        
+        .music-toggle {
+            background: rgba(255, 107, 157, 0.9);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.7);
+        }
+        
+        .music-toggle.playing {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 157, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 107, 157, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 157, 0); }
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalAppear 0.5s ease;
+        }
+        
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Cursor Hearts */
+        .cursor-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1001;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.3s, transform 1s;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .title {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .gifts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gift-box {
+                padding: 25px;
+            }
+            
+            .letter-title,
+            .memories-title {
+                font-size: 2.5rem;
+            }
+            
+            .surprise-button {
+                padding: 20px 40px;
+                font-size: 1.6rem;
+            }
+            
+            .music-player {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .gift-title {
+                font-size: 1.8rem;
+            }
+            
+            .letter-content {
+                font-size: 1.1rem;
+            }
+            
+            .surprise-button {
+                padding: 15px 30px;
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-bg" id="heartsBg"></div>
+    
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-toggle" id="musicToggle">
+            <i class="fas fa-music"></i>
+        </button>
+        <audio id="birthdayMusic" loop>
+            <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-443.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">My Gift of Love for You 💝</h1>
+            <p class="subtitle">Happy Birthday to the most amazing person in my life!</p>
+            <p style="font-size: 1.3rem; color: #5a4d8c;">Scroll down to unwrap your special gifts...</p>
+        </div>
+        
+        <!-- Gift Boxes -->
+        <div class="gifts-container">
+            <!-- Gift 1: Virtual Hug -->
+            <div class="gift-box" data-gift="hug">
+                <div class="gift-icon">🤗</div>
+                <h3 class="gift-title">Virtual Hug</h3>
+                <p class="gift-description">The warmest, tightest hug you can feel through the screen. Just for you!</p>
+                <button class="open-gift-btn">Open This Gift</button>
+            </div>
+            
+            <!-- Gift 2: Digital Rose -->
+            <div class="gift-box" data-gift="rose">
+                <div class="gift-icon">🌹</div>
+                <h3 class="gift-title">Everlasting Rose</h3>
+                <p class="gift-description">A beautiful rose that will never wilt, just like my love for you.</p>
+                <button class="open-gift-btn">Open This Gift</button>
+            </div>
+            
+            <!-- Gift 3: Special Message -->
+            <div class="gift-box" data-gift="message">
+                <div class="gift-icon">💌</div>
+                <h3 class="gift-title">Secret Message</h3>
+                <p class="gift-description">A heartfelt message that comes straight from my heart to yours.</p>
+                <button class="open-gift-btn">Open This Gift</button>
+            </div>
+            
+            <!-- Gift 4: Memory Lane -->
+            <div class="gift-box" data-gift="memories">
+                <div class="gift-icon">🌟</div>
+                <h3 class="gift-title">Memory Lane</h3>
+                <p class="gift-description">Relive our beautiful moments together through this digital scrapbook.</p>
+                <button class="open-gift-btn">Open This Gift</button>
+            </div>
+        </div>
+        
+        <!-- Love Letter -->
+        <div class="love-letter-container">
+            <h2 class="letter-title">My Dearest Best Friend...</h2>
+            <div class="letter-content">
+                <p>On your special day, I wanted to create something as unique and beautiful as you are. This website is my digital gift to you - a collection of love, memories, and promises.</p>
+                
+                <p>Every moment with you feels like a precious gift. Your laughter is my favorite melody, your smile lights up my world, and your friendship is the greatest treasure I could ever ask for.</p>
+                
+                <p>I remember the first time we met, how naturally we clicked. The late-night conversations, the inside jokes that only we understand, the support we've given each other through thick and thin - these are the moments that make our friendship so special.</p>
+                
+                <p>Today, I want to remind you of how incredibly amazing you are. You're strong, kind, beautiful inside and out, and you deserve all the happiness in the world. May this birthday be the beginning of your best year yet!</p>
+                
+                <p>No matter where life takes us, know that I'll always be here for you. Through every celebration and every challenge, through every laugh and every tear. You're not just my best friend - you're family.</p>
+                
+                <p>Here's to more adventures, more memories, and more of "us". May we continue to grow together, support each other, and create countless more beautiful moments.</p>
+            </div>
+            <div class="signature">
+                Forever your best friend ❤️
+            </div>
+        </div>
+        
+        <!-- Memories Gallery -->
+        <div class="memories-container">
+            <h2 class="memories-title">Our Beautiful Moments</h2>
+            <div class="memory-grid">
+                <div class="memory-card">
+                    <div class="memory-icon">🤣</div>
+                    <div class="memory-text">Endless Laughter</div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-icon">🫂</div>
+                    <div class="memory-text">Always There</div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-icon">🌙</div>
+                    <div class="memory-text">Late Night Talks</div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-icon">🤝</div>
+                    <div class="memory-text">Unbreakable Bond</div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-icon">🎉</div>
+                    <div class="memory-text">Celebrations</div>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-icon">💪</div>
+                    <div class="memory-text">Strength Together</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Final Surprise -->
+        <div class="surprise-section">
+            <button class="surprise-button" id="finalSurprise">
+                🎁 Click for Your Final Surprise! 🎁
+            </button>
+        </div>
+    </div>
+    
+    <!-- Modals for Gifts -->
+    <div class="modal" id="hugModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('hugModal')">×</button>
+            <h2 style="font-family: 'Dancing Script', cursive; color: #ff6b9d; font-size: 3rem; margin-bottom: 20px; text-align: center;">🤗 Virtual Hug 🤗</h2>
+            <div style="text-align: center; margin: 30px 0;">
+                <div style="font-size: 5rem; animation: bounce 1s infinite;">🤗</div>
+            </div>
+            <p style="font-size: 1.4rem; line-height: 1.6; text-align: center; color: #444; margin-bottom: 30px;">
+                Feel my arms wrapping around you in the warmest, tightest hug ever! 
+                No matter how far apart we are, my love and support always reach you.
+            </p>
+            <p style="font-size: 1.4rem; line-height: 1.6; text-align: center; color: #ff6b9d; font-weight: 600;">
+                This hug comes with unlimited refills! 💝
+            </p>
+        </div>
+    </div>
+    
+    <div class="modal" id="roseModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('roseModal')">×</button>
+            <h2 style="font-family: 'Dancing Script', cursive; color: #ff6b9d; font-size: 3rem; margin-bottom: 20px; text-align: center;">🌹 Everlasting Rose 🌹</h2>
+            <div style="text-align: center; margin: 30px 0;">
+                <div style="font-size: 5rem; animation: rotate 4s linear infinite;">🌹</div>
+            </div>
+            <p style="font-size: 1.4rem; line-height: 1.6; text-align: center; color: #444; margin-bottom: 30px;">
+                Just like this digital rose that will never wilt, my love and friendship for you will never fade. 
+                You are as beautiful and precious to me as the most perfect rose in the garden.
+            </p>
+            <p style="font-size: 1.4rem; line-height: 1.6; text-align: center; color: #ff6b9d; font-weight: 600;">
+                This rose represents our everlasting friendship! 💖
+            </p>
+        </div>
+    </div>
+    
+    <div class="modal" id="messageModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('messageModal')">×</button>
+            <h2 style="font-family: 'Dancing Script', cursive; color: #ff6b9d; font-size: 3rem; margin-bottom: 20px; text-align: center;">💌 Secret Message 💌</h2>
+            <div style="background: #fff0f5; padding: 30px; border-radius: 20px; margin: 30px 0;">
+                <p style="font-size: 1.5rem; line-height: 1.8; color: #5a4d8c; text-align: center;">
+                    "You are the rainbow after my storms,<br>
+                    The sunshine on my cloudy days,<br>
+                    The laughter in my silence,<br>
+                    And the peace in my chaos.<br><br>
+                    
+                    Thank you for being you.<br>
+                    Thank you for being my friend.<br>
+                    Thank you for existing in my life.<br><br>
+                    
+                    You are loved more than words can express."
+                </p>
+            </div>
+            <p style="font-size: 1.3rem; line-height: 1.6; text-align: center; color: #666;">
+                This message will self-destruct in... just kidding! It's yours forever! 💕
+            </p>
+        </div>
+    </div>
+    
+    <div class="modal" id="memoriesModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('memoriesModal')">×</button>
+            <h2 style="font-family: 'Dancing Script', cursive; color: #ff6b9d; font-size: 3rem; margin-bottom: 20px; text-align: center;">🌟 Memory Lane 🌟</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0;">
+                <div style="background: #fff0f5; padding: 20px; border-radius: 15px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">😄</div>
+                    <div style="font-weight: 600; color: #ff6b9d;">First Laugh</div>
+                    <div style="color: #666; margin-top: 5px;">That joke only we get!</div>
+                </div>
+                <div style="background: #f0f8ff; padding: 20px; border-radius: 15px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🌧️</div>
+                    <div style="font-weight: 600; color: #5b86e5;">Rainy Days</div>
+                    <div style="color: #666; margin-top: 5px;">Singing in the rain</div>
+                </div>
+                <div style="background: #f0fff0; padding: 20px; border-radius: 15px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🎂</div>
+                    <div style="font-weight: 600; color: #4ecdc4;">Birthdays</div>
+                    <div style="color: #666; margin-top: 5px;">Yearly celebrations</div>
+                </div>
+                <div style="background: #fffaf0; padding: 20px; border-radius: 15px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📞</div>
+                    <div style="font-weight: 600; color: #ffc3a0;">Late Calls</div>
+                    <div style="color: #666; margin-top: 5px;">3 AM conversations</div>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.4rem; line-height: 1.6; text-align: center; color: #444; margin-top: 30px;">
+                These are just a few of our countless beautiful memories. Each one is a treasure I hold close to my heart.
+            </p>
+        </div>
+    </div>
+    
+    <div class="modal" id="finalModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('finalModal')">×</button>
+            <h2 style="font-family: 'Dancing Script', cursive; color: #ff6b9d; font-size: 3rem; margin-bottom: 20px; text-align: center;">🎉 Your Final Surprise! 🎉</h2>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <div style="font-size: 6rem; animation: bounce 1s infinite;">🎁</div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #fff0f5, #f0f8ff); padding: 30px; border-radius: 20px; margin: 30px 0;">
+                <h3 style="color: #5a4d8c; font-size: 2rem; margin-bottom: 20px; text-align: center;">The Best Gift of All...</h3>
+                
+                <p style="font-size: 1.5rem; line-height: 1.8; color: #5a4d8c; text-align: center; margin-bottom: 20px;">
+                    My final gift to you is a promise:<br><br>
+                    
+                    <span style="color: #ff6b9d; font-weight: 600;">I promise</span> to always be there for you, through thick and thin.<br>
+                    <span style="color: #ff6b9d; font-weight: 600;">I promise</span> to celebrate your victories and support you in challenges.<br>
+                    <span style="color: #ff6b9d; font-weight: 600;">I promise</span> to keep making memories with you.<br>
+                    <span style="color: #ff6b9d; font-weight: 600;">I promise</span> that our friendship will only grow stronger.<br><br>
+                    
+                    You are, and will always be, my best friend. 💝
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="font-size: 1.3rem; color: #666;">
+                    Thank you for being you. Happy Birthday once again! 🎂🎉
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const heartsBg = document.getElementById('heartsBg');
+        const musicToggle = document.getElementById('musicToggle');
+        const birthdayMusic = document.getElementById('birthdayMusic');
+        const finalSurprise = document.getElementById('finalSurprise');
+        
+        // Create floating hearts background
+        function createFloatingHearts() {
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+                heart.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.color = `hsl(${Math.random() * 60 + 320}, 100%, 70%)`; // Pink/purple hues
+                heartsBg.appendChild(heart);
+            }
+        }
+        
+        // Create cursor hearts trail
+        let lastTime = 0;
+        document.addEventListener('mousemove', function(e) {
+            const currentTime = Date.now();
+            if (currentTime - lastTime > 30) {
+                createHeartTrail(e.clientX, e.clientY);
+                lastTime = currentTime;
+            }
+        });
+        
+        function createHeartTrail(x, y) {
+            const heart = document.createElement('div');
+            heart.classList.add('cursor-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.color = `hsl(${Math.random() * 60 + 320}, 100%, 65%)`;
+            heart.style.fontSize = `${Math.random() * 15 + 15}px`;
+            heart.style.opacity = '1';
+            
+            document.body.appendChild(heart);
+            
+            // Animate heart
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 50 + Math.random() * 100;
+            const targetX = x + Math.cos(angle) * distance;
+            const targetY = y + Math.sin(angle) * distance;
+            
+            heart.animate([
+                { 
+                    opacity: 1,
+                    transform: 'translate(-50%, -50%) scale(1) rotate(0deg)'
+                },
+                { 
+                    opacity: 0,
+                    transform: `translate(${targetX - x}px, ${targetY - y}px) scale(0.5) rotate(180deg)`
+                }
+            ], {
+                duration: 1000 + Math.random() * 500,
+                easing: 'ease-out'
+            });
+            
+            // Remove after animation
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 1500);
+        }
+        
+        // Music control
+        let isMusicPlaying = false;
+        
+        function playMusic() {
+            birthdayMusic.volume = 0.3;
+            birthdayMusic.play()
+                .then(() => {
+                    isMusicPlaying = true;
+                    musicToggle.classList.add('playing');
+                    musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                })
+                .catch(e => {
+                    console.log("Music play failed:", e);
+                });
+        }
+        
+        function pauseMusic() {
+            birthdayMusic.pause();
+            isMusicPlaying = false;
+            musicToggle.classList.remove('playing');
+            musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+        }
+        
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Create celebration effects for some modals
+            if (modalId === 'finalModal') {
+                createCelebrationEffects();
+            }
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Create celebration effects for final surprise
+        function createCelebrationEffects() {
+            // Create confetti
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.width = '15px';
+                    confetti.style.height = '15px';
+                    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.left = `${Math.random() * 100}%`;
+                    confetti.style.top = '-20px';
+                    confetti.style.zIndex = '9999';
+                    confetti.style.boxShadow = '0 0 10px white';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Animate confetti
+                    confetti.animate([
+                        { 
+                            transform: 'translateY(0) rotate(0deg)',
+                            opacity: 1
+                        },
+                        { 
+                            transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random() * 360}deg)`,
+                            opacity: 0
+                        }
+                    ], {
+                        duration: 2000 + Math.random() * 1000,
+                        easing: 'cubic-bezier(0.1, 0.8, 0.9, 0.1)'
+                    });
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.remove();
+                        }
+                    }, 3000);
+                }, i * 50);
+            }
+        }
+        
+        // Initialize everything
+        window.addEventListener('DOMContentLoaded', function() {
+            // Create floating hearts
+            createFloatingHearts();
+            
+            // Music toggle
+            musicToggle.addEventListener('click', function() {
+                if (isMusicPlaying) {
+                    pauseMusic();
+                } else {
+                    playMusic();
+                }
+            });
+            
+            // Auto-play music on first interaction
+            document.addEventListener('click', function initMusic() {
+                if (!isMusicPlaying) {
+                    playMusic();
+                }
+                document.removeEventListener('click', initMusic);
+            });
+            
+            // Gift box click events
+            document.querySelectorAll('.gift-box').forEach(box => {
+                box.addEventListener('click', function() {
+                    const giftType = this.getAttribute('data-gift');
+                    openModal(giftType + 'Modal');
+                });
+            });
+            
+            // Open gift buttons
+            document.querySelectorAll('.open-gift-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const giftType = this.closest('.gift-box').getAttribute('data-gift');
+                    openModal(giftType + 'Modal');
+                });
+            });
+            
+            // Final surprise button
+            finalSurprise.addEventListener('click', function() {
+                openModal('finalModal');
+            });
+            
+            // Close modal when clicking outside content
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(this.id);
+                    }
+                });
+            });
+            
+            // Add scroll animations
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.gift-box, .love-letter-container, .memory-card');
+                
+                elements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    if (rect.top <= windowHeight * 0.85) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Initial style for animation
+            document.querySelectorAll('.gift-box, .love-letter-container, .memory-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s, transform 0.8s';
+            });
+            
+            // Initial check
+            animateOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Add a welcome message after 2 seconds
+            setTimeout(() => {
+                const welcomeMsg = document.createElement('div');
+                welcomeMsg.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: rgba(255, 255, 255, 0.95);
+                        padding: 30px 50px;
+                        border-radius: 25px;
+                        text-align: center;
+                        z-index: 1001;
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                        animation: fadeIn 0.5s;
+                        border: 3px solid #ff6b9d;
+                        max-width: 500px;
+                        width: 90%;
+                    ">
+                        <h3 style="
+                            font-family: 'Dancing Script', cursive;
+                            color: #ff6b9d;
+                            font-size: 2.5rem;
+                            margin-bottom: 20px;
+                        ">
+                            Welcome to Your Gift! 💝
+                        </h3>
+                        <p style="
+                            font-family: 'Poppins', sans-serif;
+                            color: #333;
+                            font-size: 1.2rem;
+                            line-height: 1.6;
+                            margin-bottom: 25px;
+                        ">
+                            Happy Birthday! This website is my special gift to you. 
+                            Click on the gift boxes to unwrap your surprises!
+                        </p>
+                        <button onclick="this.parentElement.remove()" style="
+                            background: #ff6b9d;
+                            color: white;
+                            border: none;
+                            padding: 12px 30px;
+                            font-size: 1.2rem;
+                            border-radius: 50px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">
+                            Let's Begin! 🎁
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(welcomeMsg);
+            }, 2000);
+        });
+        
+        // Add rotate animation for rose
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translate(-50%, -60%); }
+                to { opacity: 1; transform: translate(-50%, -50%); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
